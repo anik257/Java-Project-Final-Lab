@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/mysql-connector-j.jar"/>
+	<classpathentry kind="lib" path="lib/javafx-base-21.0.2-win.jar"/>
+	<classpathentry kind="lib" path="lib/javafx-controls-21.0.2-win.jar"/>
+	<classpathentry kind="lib" path="lib/javafx-fxml-21.0.2-win.jar"/>
+	<classpathentry kind="lib" path="lib/javafx-graphics-21.0.2-win.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
