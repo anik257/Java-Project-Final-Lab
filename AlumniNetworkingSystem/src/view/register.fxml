@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="600.0" prefWidth="800.0" styleClass="login-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" spacing="20.0">
+         <children>
+            <!-- Register Card Container -->
+            <VBox prefWidth="480.0" spacing="15.0" styleClass="card">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <children>
+                  <!-- Header Section -->
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label styleClass="title-label" text="Alumni Link">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="subtitle-label" text="Create your account to start networking" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  
+                  <!-- Common Form Fields -->
+                  <VBox spacing="10.0">
+                     <children>
+                        <!-- Name Field -->
+                        <VBox spacing="4.0">
+                           <children>
+                              <Label styleClass="normal-label" text="Full Name" />
+                              <TextField fx:id="nameField" promptText="John Doe" />
+                           </children>
+                        </VBox>
+                        
+                        <!-- Email and Password Side-by-Side -->
+                        <HBox spacing="15.0">
+                           <children>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Email Address" />
+                                    <TextField fx:id="emailField" promptText="name@university.edu" />
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Password" />
+                                    <PasswordField fx:id="passwordField" promptText="••••••••" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <!-- Role Selection -->
+                        <VBox spacing="4.0">
+                           <children>
+                              <Label styleClass="normal-label" text="I am registering as a:" />
+                              <ComboBox fx:id="roleComboBox" maxWidth="1.7976931348623157E308" promptText="Select your role" onAction="#handleRoleSelectionChange" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Dynamic Student Fields Section -->
+                  <VBox fx:id="studentSection" spacing="10.0" managed="false" visible="false">
+                     <children>
+                        <HBox spacing="15.0">
+                           <children>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Major / Department" />
+                                    <TextField fx:id="majorField" promptText="Computer Science" />
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Graduation Year" />
+                                    <TextField fx:id="gradYearField" promptText="2026" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Dynamic Alumni Fields Section -->
+                  <VBox fx:id="alumniSection" spacing="10.0" managed="false" visible="false">
+                     <children>
+                        <HBox spacing="15.0">
+                           <children>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Job Title" />
+                                    <TextField fx:id="jobTitleField" promptText="Software Engineer" />
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Company" />
+                                    <TextField fx:id="companyField" promptText="Google" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox spacing="15.0">
+                           <children>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Industry" />
+                                    <TextField fx:id="industryField" promptText="Technology" />
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="normal-label" text="Years of Experience" />
+                                    <TextField fx:id="experienceField" promptText="3" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <CheckBox fx:id="willingToMentorCheckBox" selected="true" styleClass="normal-label" text="Available &amp; willing to mentor students" />
+                     </children>
+                  </VBox>
+                  
+                  <!-- Status/Error messages -->
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label fx:id="errorLabel" styleClass="error-label" visible="false" wrapText="true" />
+                        <Label fx:id="successLabel" styleClass="success-label" visible="false" wrapText="true" />
+                     </children>
+                  </VBox>
+                  
+                  <!-- Submit & Navigation Buttons -->
+                  <VBox spacing="10.0" alignment="CENTER">
+                     <children>
+                        <Button fx:id="registerButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleRegister" styleClass="btn-primary" text="Create Account" />
+                        
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label styleClass="subtitle-label" text="Already have an account?" />
+                              <Button mnemonicParsing="false" onAction="#handleBackToLoginRedirect" styleClass="btn-secondary" text="Sign In" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

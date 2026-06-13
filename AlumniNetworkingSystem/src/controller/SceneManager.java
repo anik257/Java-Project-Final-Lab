@@ -42,11 +42,12 @@ public class SceneManager {
      * Switch the scene of the application window.
      * @param fxmlFile FXML file name located inside the "/view/" resources package.
      * @param title Title of the stage window.
+     * @return true if switch succeeded, false otherwise.
      */
-    public static void switchScene(String fxmlFile, String title) {
+    public static boolean switchScene(String fxmlFile, String title) {
         if (primaryStage == null) {
             System.err.println("[SceneManager] Primary stage is not set.");
-            return;
+            return false;
         }
 
         try {
@@ -78,9 +79,11 @@ public class SceneManager {
             primaryStage.setTitle(title);
             primaryStage.show();
             System.out.println("[SceneManager] Switched scene to: " + fxmlFile);
+            return true;
         } catch (Exception e) {
             System.err.println("[SceneManager] Failed to load FXML: " + fxmlFile);
             e.printStackTrace();
+            return false;
         }
     }
 }

@@ -19,6 +19,9 @@ public class Main {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public static void main(String[] args) {
+        // Trigger database auto-creation and schema initialization on startup
+        util.DBConnection.isMockMode();
+
         System.out.println("=================================================");
         System.out.println("      WELCOME TO ALUMNI NETWORKING SYSTEM        ");
         System.out.println("=================================================");

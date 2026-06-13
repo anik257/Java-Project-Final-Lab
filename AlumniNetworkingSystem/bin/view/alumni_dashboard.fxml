@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlumniDashboardController">
+   <left>
+      <VBox spacing="10.0" style="-fx-background-color: #1e293b; -fx-pref-width: 220px;">
+         <padding>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="30.0" />
+         </padding>
+         <children>
+            <Label style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 18px;" text="Alumni Portal" />
+            <Label fx:id="welcomeLabel" styleClass="subtitle-label" text="Welcome!" />
+            <VBox spacing="10.0" VBox.vgrow="ALWAYS" style="-fx-padding: 30px 0 0 0;">
+               <children>
+                  <Button fx:id="profileBtn" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showProfileTab" styleClass="btn-primary" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-alignment: center-left;" text="👤 My Profile" />
+                  <Button fx:id="requestsBtn" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showRequestsTab" styleClass="btn-primary" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-alignment: center-left;" text="📥 Mentorship Requests" />
+                  <Button fx:id="eventsBtn" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showEventsTab" styleClass="btn-primary" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-alignment: center-left;" text="📅 Events" />
+               </children>
+            </VBox>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" styleClass="btn-primary" style="-fx-background-color: #ef4444;" text="Logout" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <StackPane styleClass="login-bg">
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+         <children>
+            <!-- Profile Tab -->
+            <VBox fx:id="profileTab" spacing="15.0" visible="true" styleClass="card" style="-fx-padding: 20px;">
+               <children>
+                  <Label styleClass="title-label" text="My Professional Profile" />
+                  <VBox spacing="10.0" VBox.vgrow="ALWAYS" style="-fx-max-width: 500px;">
+                     <children>
+                        <Label styleClass="normal-label" text="Full Name" />
+                        <TextField fx:id="nameField" />
+                        <Label styleClass="normal-label" text="Job Title" />
+                        <TextField fx:id="jobTitleField" />
+                        <Label styleClass="normal-label" text="Company" />
+                        <TextField fx:id="companyField" />
+                        <Label styleClass="normal-label" text="Industry" />
+                        <TextField fx:id="industryField" />
+                        <Label styleClass="normal-label" text="Years of Experience" />
+                        <TextField fx:id="experienceField" />
+                        <CheckBox fx:id="mentorCheckBox" text="Willing to Mentor Students" styleClass="normal-label" style="-fx-text-fill: white;" />
+                        <Label styleClass="normal-label" text="Update Password (leave blank to keep current)" />
+                        <TextField fx:id="passwordField" promptText="New Password" />
+                        <Label fx:id="profileStatusLabel" styleClass="success-label" visible="false" />
+                        <Button mnemonicParsing="false" onAction="#handleUpdateProfile" styleClass="btn-primary" text="Save Changes" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <!-- Requests Tab -->
+            <VBox fx:id="requestsTab" spacing="15.0" visible="false" styleClass="card" style="-fx-padding: 20px;">
+               <children>
+                  <Label styleClass="title-label" text="Received Mentorship Requests" />
+                  <TableView fx:id="requestsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="reqIdCol" prefWidth="50.0" text="ID" />
+                      <TableColumn fx:id="reqStudentCol" prefWidth="120.0" text="Student Name" />
+                      <TableColumn fx:id="reqDateCol" prefWidth="150.0" text="Request Date" />
+                      <TableColumn fx:id="reqNotesCol" prefWidth="250.0" text="Student Notes" />
+                      <TableColumn fx:id="reqActionCol" prefWidth="150.0" text="Action" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <!-- Events Tab -->
+            <VBox fx:id="eventsTab" spacing="15.0" visible="false" styleClass="card" style="-fx-padding: 20px;">
+               <children>
+                  <Label styleClass="title-label" text="Networking Events" />
+                  <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="title-label" text="Upcoming Events" style="-fx-font-size: 16px;" />
+                              <TableView fx:id="eventsTable" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn fx:id="eventTitleCol" prefWidth="120.0" text="Title" />
+                                  <TableColumn fx:id="eventDateCol" prefWidth="120.0" text="Date" />
+                                  <TableColumn fx:id="eventLocCol" prefWidth="100.0" text="Location" />
+                                  <TableColumn fx:id="eventOrgCol" prefWidth="120.0" text="Organizer" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox spacing="10.0" style="-fx-pref-width: 250px;">
+                           <children>
+                              <Label styleClass="title-label" text="Create Event" style="-fx-font-size: 16px;" />
+                              <Label styleClass="normal-label" text="Title" />
+                              <TextField fx:id="eventTitleField" />
+                              <Label styleClass="normal-label" text="Description" />
+                              <TextArea fx:id="eventDescArea" prefHeight="80.0" wrapText="true" />
+                              <Label styleClass="normal-label" text="Date (yyyy-MM-dd HH:mm)" />
+                              <TextField fx:id="eventDateField" promptText="2026-06-25 14:00" />
+                              <Label styleClass="normal-label" text="Location" />
+                              <TextField fx:id="eventLocField" />
+                              <Label fx:id="eventStatusLabel" styleClass="success-label" visible="false" />
+                              <Button mnemonicParsing="false" onAction="#handleCreateEvent" styleClass="btn-primary" text="Publish Event" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

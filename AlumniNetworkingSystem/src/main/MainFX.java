@@ -8,6 +8,9 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        // Trigger database auto-creation and schema initialization on startup
+        util.DBConnection.isMockMode();
+
         // 1. Pass the primary stage to SceneManager for switching scenes
         SceneManager.setPrimaryStage(primaryStage);
         

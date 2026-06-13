@@ -57,19 +57,26 @@ public class LoginController {
             String role = user.getRole();
             System.out.println("[LoginController] User logged in. Role: " + role);
             
+            boolean switchSuccess = false;
             switch (role) {
                 case "STUDENT":
-                    SceneManager.switchScene("student_dashboard.fxml", "Student Portal - " + user.getName());
+                    switchSuccess = SceneManager.switchScene("student_dashboard.fxml", "Student Portal - " + user.getName());
                     break;
                 case "ALUMNI":
-                    SceneManager.switchScene("alumni_dashboard.fxml", "Alumni Portal - " + user.getName());
+                    switchSuccess = SceneManager.switchScene("alumni_dashboard.fxml", "Alumni Portal - " + user.getName());
                     break;
                 case "ADMIN":
-                    SceneManager.switchScene("admin_dashboard.fxml", "Admin Control Console");
+                    switchSuccess = SceneManager.switchScene("admin_dashboard.fxml", "Admin Control Console");
                     break;
                 default:
                     showError("Unknown user role profile. Access denied.");
                     loginButton.setDisable(false);
+                    return;
+            }
+
+            if (!switchSuccess) {
+                showError("Error: Failed to load the dashboard view.");
+                loginButton.setDisable(false);
             }
         } else {
             showError("Invalid email address or password combination.");
